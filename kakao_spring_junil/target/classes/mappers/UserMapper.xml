@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.kakao.model.dao.UserDao">
+	<select id="emailCheck" resultType="Integer">
+		select
+			count(user_email)
+		from
+			user_mst
+		where
+			user_email = #{signUpEmail}
+	</select>
+	
+	<select id="phoneCheck" parameterType="com.spring.kakao.model.json.SignUpVo" resultType="Integer">
+		select
+			count(pm.phone_number) + count(um.user_phone) as result
+		from
+			phonenumber_list_mst pm
+			left outer join user_mst um on(um.user_phone = pm.phone_number and um.user_name = pm.phone_user_name)
+		where
+			pm.phone_number = #{signUpPhone}
+			and pm.phone_user_name = #{signUpName}
+	</select>
+	
+	<insert id="signUp" parameterType="com.spring.kakao.model.json.SignUpVo">
+		insert into
+			user_mst
+		values(
+			#{signUpEmail},
+			#{signUpPassword},
+			#{signUpName},
+			#{signUpPhone},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<select id="signIn" parameterType="com.spring.kakao.model.json.SignInVo" resultType="Integer">
+		select
+			count(um.user_email) + count(ud.user_password)
+		from
+			user_mst um
+			left outer join user_mst ud on(ud.user_email = um.user_email and ud.user_password = #{user_password})
+		where
+			um.user_email = #{user_email};
+	</select>
+	
+	<select id="getUser" resultType="com.spring.kakao.model.dto.UserDto">
+		select
+			user_email,
+			user_password,
+			user_name,
+			user_phone
+		from
+			user_mst
+		where
+			user_email = #{user_email};	
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
