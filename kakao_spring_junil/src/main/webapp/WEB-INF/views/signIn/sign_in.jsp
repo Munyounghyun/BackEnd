@@ -47,7 +47,7 @@
                        	<span class="passwordErrorMsg"></span>
                        </div>
                        <div class="item_chk">
-                           <input type="checkbox" class="item_cb" id="chk">
+                           <input type="checkbox" class="item_cb" id="chk" value="off">
                            <label class="chk_on" for="chk">
                                <i class="far fa-check-circle"></i>
                            </label>

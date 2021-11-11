@@ -12,6 +12,5 @@ public interface UserService {
 	public int signUp(SignUpVo signUpVo);
 	public int signIn(SignInVo signInVo);
 	public UserDto getUser(String user_email);
-	//public void setUserCookie(String user_email);
 	public Cookie setUserCookie(String user_email);
 }

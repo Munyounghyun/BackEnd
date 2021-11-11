@@ -1,18 +1,21 @@
 package com.spring.kakao.model.dto;
 
-import java.util.Arrays;
-
-import org.springframework.web.multipart.MultipartFile;
-
 public class NoticeDto {
+	//notice_mst
 	private int notice_code;
 	private String notice_title;
 	private String notice_writer;
 	private String notice_date;
 	private int notice_count;
+	//notice_dtl
 	private String notice_content;
 	private String originFileNames;
 	private String tempFileNames;
+	
+	private int nextNotice_code; //다음 글 코드
+	private String nextNotice_title;
+	private int preNotice_code; //이전 글 코드
+	private String preNotice_title;
 	
 	
 	public int getNotice_code() {
@@ -63,16 +66,38 @@ public class NoticeDto {
 	public void setTempFileNames(String tempFileNames) {
 		this.tempFileNames = tempFileNames;
 	}
-	
+	public int getPreNotice_code() {
+		return preNotice_code;
+	}
+	public void setPreNotice_code(int preNotice_code) {
+		this.preNotice_code = preNotice_code;
+	}
+	public String getPreNotice_title() {
+		return preNotice_title;
+	}
+	public void setPreNotice_title(String preNotice_title) {
+		this.preNotice_title = preNotice_title;
+	}
+	public int getNextNotice_code() {
+		return nextNotice_code;
+	}
+	public void setNextNotice_code(int nextNotice_code) {
+		this.nextNotice_code = nextNotice_code;
+	}
+	public String getNextNotice_title() {
+		return nextNotice_title;
+	}
+	public void setNextNotice_title(String nextNotice_title) {
+		this.nextNotice_title = nextNotice_title;
+	}
 	@Override
 	public String toString() {
 		return "NoticeDto [notice_code=" + notice_code + ", notice_title=" + notice_title + ", notice_writer="
 				+ notice_writer + ", notice_date=" + notice_date + ", notice_count=" + notice_count
 				+ ", notice_content=" + notice_content + ", originFileNames=" + originFileNames + ", tempFileNames="
-				+ tempFileNames + "]";
+				+ tempFileNames + ", preNotice_code=" + preNotice_code + ", preNotice_title=" + preNotice_title
+				+ ", nextNotice_code=" + nextNotice_code + ", nextNotice_title=" + nextNotice_title + "]";
 	}
-	
-	
 	
 	
 	

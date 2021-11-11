@@ -1,5 +1,6 @@
 const item_ip = document.querySelectorAll('.item_ip');
 const btn_login = document.querySelector('.btn_login');
+const item_cb = document.querySelector('.item_cb');
 
 var signInData = {
 	user_email: '',
@@ -31,6 +32,14 @@ function messageService(msgText, msgFlag){
 	}else {
 		passwordErrorMsg.appendChild(msgTextNode);
 		passwordErrorMsg.style.display = 'block';
+	}
+}
+
+item_cb.onclick = () => {
+	if(item_cb.value == 'off'){
+		item_cb.value = 'on';
+	}else{
+		item_cb.value = 'off';
 	}
 }
 

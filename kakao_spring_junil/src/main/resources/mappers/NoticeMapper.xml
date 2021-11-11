@@ -51,8 +51,58 @@
 			now(),
 			now()
 		)
-
 	</insert>
+	
+	<select id="getNotice" resultType="com.spring.kakao.model.dto.NoticeDto">
+		SELECT
+			ROW_NUMBER() over(ORDER BY nn.notice_code, np.notice_code desc) AS num,
+			nm.notice_code,
+			nm.notice_title,
+			nm.notice_writer,
+			nm.notice_date,
+			nm.notice_count,
+			nd.notice_content,
+			nd.originFileNames,
+			nd.tempFileNames,
+			nn.notice_code AS nextNotice_code,
+			nn.notice_title AS nextNotice_title,
+			np.notice_code AS preNotice_code,
+			np.notice_title AS preNotice_title
+		FROM
+			notice_mst nm
+			LEFT OUTER JOIN notice_dtl nd ON(nd.notice_code = nm.notice_code)
+			LEFT OUTER JOIN notice_mst nn ON(nn.notice_code &gt; nm.notice_code)
+			LEFT OUTER JOIN notice_mst np ON(np.notice_code &lt; nm.notice_code)
+		WHERE
+			nm.notice_code = #{notice_code}
+		LIMIT
+			1;
+	</select>
+	
+	<update id="plusNoticeCount">
+		update
+			notice_mst
+		set
+			notice_count = notice_count + 1
+		where
+			notice_code = #{notice_code};
+	</update>
+	
+	<delete id="noticeMstDelete">
+		delete
+		from
+			notice_mst
+		where
+			notice_code = #{notice_code};
+	</delete>
+	
+	<delete id="noticeDtlDelete">
+		delete
+		from
+			notice_dtl
+		where
+			notice_code = #{notice_code};
+	</delete>
 </mapper>
 
 

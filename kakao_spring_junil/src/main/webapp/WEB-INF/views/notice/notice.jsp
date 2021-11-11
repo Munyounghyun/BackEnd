@@ -29,7 +29,7 @@
             <div class="notice_main">
             
             	<c:forEach var="notice" items="${noticeList }">
-            		<a href="notice-dtl?code=${notice.notice_code }">
+            		<a href="notice-dtl?notice_code=${notice.notice_code }">
 	                    <ul>
 	                        <li class="notice_num">${notice.notice_code }</li>
 	                        <li class="notice_title">${notice.notice_title }</li>
@@ -43,12 +43,11 @@
             </div>
             
             <div class="notice_footer">
-           		<c:if test="${not empty login_user}">
+           		<c:if test="${not empty login_user }">
            			<div class="notice_insert_div">
 	            		<button type="button" class="notice_insert_button" onclick="location.href='notice-insert'">글쓰기</button>
 	            	</div>
            		</c:if>
-            	
 				<ul>
 					<a href="notice?pageNumber=${noticeBean.startPage - 1 eq 0 ? 1 : noticeBean.pageNumber - 1 }"><li><i class="fas fa-arrow-circle-left"></i></li></a>
 					

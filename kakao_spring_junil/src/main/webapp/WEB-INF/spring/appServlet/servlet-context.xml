@@ -44,10 +44,10 @@
 	</beans:bean>
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="52428800"></beans:property><!-- 52428800 = 50MB -->
+		<beans:property name="maxUploadSize" value="52428800"></beans:property>
 		<!-- 최대 업로드 가능한 바이트 크기, -1의 값은 제한이 없음을 의미, 기본값 -1을 반환 자료형은 long -->
 		<beans:property name="maxInMemorySize" value="52428800"></beans:property>
-		<!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할 수 있는 최대 바이트 크기,  기본값 1MB를 반환 자료형은 long -->
+		<!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할 수 있는 최대 바이트 크기, 기본값 1MB를 반환 자료형은 long -->
 	</beans:bean>
 </beans:beans>
 

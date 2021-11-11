@@ -26,12 +26,12 @@ public class SignInController {
 	
 	@RequestMapping(value = "sign-in", method = RequestMethod.GET)
 	public String signInIndex(Model model, HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		Cookie[] cookies=request.getCookies();
-		if(cookies !=null) {
+		HttpSession session = request.getSession();
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("user_email")) {
-					UserDto userDto= userService.getUser(c.getValue());
+					UserDto userDto = userService.getUser(c.getValue());
 					session.setAttribute("login_user", userDto);
 				}
 			}
@@ -51,10 +51,9 @@ public class SignInController {
 			HttpSession session = request.getSession();
 			session.setAttribute("login_user", userService.getUser(signInVo.getUser_email()));
 			if(signInVo.getSignIncb().equals("on")) {
-				Cookie cookie=userService.setUserCookie(signInVo.getUser_email());
+				Cookie cookie = userService.setUserCookie(signInVo.getUser_email());
 				response.addCookie(cookie);
 			}
-			
 		}
 		
 		return signInVo;

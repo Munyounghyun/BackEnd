@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 	
-	@RequestMapping(value = "logout",method = RequestMethod.GET)
-	public String logout(Model model,HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session=request.getSession();
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
 		
-		Cookie[] cookies =request.getCookies();
+		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("user_email")) {

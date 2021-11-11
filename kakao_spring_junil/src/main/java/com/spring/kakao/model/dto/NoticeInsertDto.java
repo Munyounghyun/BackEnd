@@ -10,7 +10,6 @@ public class NoticeInsertDto {
 	private MultipartFile[] notice_file;
 	private String notice_content;
 	
-	
 	public String getNotice_title() {
 		return notice_title;
 	}
@@ -35,13 +34,10 @@ public class NoticeInsertDto {
 	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
 	}
-	
 	@Override
 	public String toString() {
 		return "NoticeInsertDto [notice_title=" + notice_title + ", notice_writer=" + notice_writer + ", notice_file="
 				+ Arrays.toString(notice_file) + ", notice_content=" + notice_content + "]";
 	}
-	
-	
 	
 }

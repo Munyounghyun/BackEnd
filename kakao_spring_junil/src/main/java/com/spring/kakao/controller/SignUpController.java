@@ -25,18 +25,18 @@ public class SignUpController {
 	private UserService userService;
 
 	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
-	public String signUpIndex(Model model,HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		Cookie[] cookies=request.getCookies();
-		if(cookies !=null) {
+	public String signUpIndex(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("user_email")) {
-					UserDto userDto= userService.getUser(c.getValue());
+					UserDto userDto = userService.getUser(c.getValue());
 					session.setAttribute("login_user", userDto);
 				}
 			}
 		}
-		if(session.getAttribute("login_user")!=null) {
+		if(session.getAttribute("login_user") != null) {
 			return "redirect:index";
 		}
 		return "signUp/sign_up";

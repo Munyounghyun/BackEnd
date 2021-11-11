@@ -9,4 +9,8 @@ public interface NoticeDao {
 	public int getNoticeMaxCode();
 	public int noticeMstInsert(NoticeDto noticeDto);
 	public int noticeDtlInsert(NoticeDto noticeDto);
+	public NoticeDto getNotice(int notice_code);
+	public int plusNoticeCount(int notice_code);
+	public int noticeMstDelete(int notice_code);
+	public int noticeDtlDelete(int notice_code);
 }
